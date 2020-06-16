@@ -13,9 +13,11 @@
 windows github 桌面工具  Open In Git Shell 
 
 ```
-git checkout --orphan vue  #创建孤本分支vue
+git checkout --orphan webpack  #创建孤本分支webpack
 
 git stauts   #查看状态
 
 git commit   #提交修改
 ```
+## webpack
+
