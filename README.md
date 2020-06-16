@@ -13,7 +13,7 @@
 windows github 桌面工具  Open In Git Shell 
 
 ```
-git checkout --orphan vue  #创建孤本分支vue
+git checkout --orphan whateverYouLike  #创建孤本分支whateverYouLike
 
 git stauts   #查看状态
 
