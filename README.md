@@ -19,3 +19,7 @@ git stauts   #查看状态
 
 git commit   #提交修改
 ```
+
+
+## vue - analyse
+
