@@ -1,8 +1,8 @@
 // main  入口文件
-function greeter(person){
+function greeter(person:string){
   return 'hello,' + person
 }
 
-let user = 'json'
+let user = 'json' 
 
-document.body.textContent = greeter(user);
+document.body.textContent = greeter(user); 
