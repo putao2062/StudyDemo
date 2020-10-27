@@ -1,3 +1,4 @@
+// What is javascript
 let number
 let name
 let rate = 1.2
