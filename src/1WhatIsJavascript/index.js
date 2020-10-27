@@ -186,3 +186,22 @@ function showScope3(){
 log(scope,grass)        // 'global'
 log(showScope3(),grass)  // 'local2'
 log(scope,grass)        // 'local2'
+
+// 递归  递归没有完成时，函数的计算结果会暂时被挂起   避免超出javascript 的处理能力
+// 任何可以被递归定义的函数，都可以被改写成迭代式的程序
+// factorial2(3)
+// 3*factorial2(2)
+// 3*2*factorial2(1)
+// 3*2*1
+// 3*2
+// 6
+
+function factorial2(number){
+  if(number === 1){
+    return number
+  } else {
+    return number*(factorial2(number-1))
+  }
+} 
+
+log(factorial2(5))
