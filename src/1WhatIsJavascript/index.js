@@ -205,3 +205,29 @@ function factorial2(number){
 } 
 
 log(factorial2(5))
+
+// 对象和面向对象编程
+// 定义构造函数  包含属性和方法声明
+// 定义方法
+// this关键字用来将方法和属性绑定到一个对象的实例上
+function Checking(amount){
+  this.blance = amount
+  this.fun1 = fun1
+  this.fun2 = fun2
+}
+function fun1(){
+  console.log(1)
+  console.log("fun1")
+}
+function fun2(){
+  console.log(2)
+  console.log(this)
+  console.log(this.blance)
+}
+
+let acount = new Checking(500)
+// 函数体为void函数  返回 undefined
+log(acount.fun1(),bright)  // 1  fun1 undefined
+log(acount.fun2(),bright)  //2 500 undefined    这里的fun2 中的this 指的是 Checking
+log(fun2(),bright)  //2 undefined undefined     这里的fun2 中的this 指的是 global  浏览器端是Window
+log(this)  //｛｝ 浏览器端 是 undefined
