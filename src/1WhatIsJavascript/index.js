@@ -122,3 +122,27 @@ log(sum,flower)
 // int *p1 = &（++i）；//正确
 
 // int *p2 = &（i++）；//错误
+
+// 函数
+// 有返回值的函数  阶乘
+function factorial(number){
+  let product = 1;
+  // for 循环中的 括号内的第三部分的代码执行在 代码体之后 执行，所以 --i 和 i-- 不影响结果
+  for(let i= number;i>=1;i--,console.log(i)){
+    product*=i
+    console.log(i+"h")
+  }
+  return product
+}
+log(factorial(3),flower)
+
+// for循环中i++与++i的区别
+// 1、++i是先改变i的值即加1后再使用i的值；而i++是先使用i的值在改变它的值即加。
+
+// 2、for循环内部仅形式不同：当i++循环和++i循环在for循环内部，虽然形式上明显不同，但输出结果可以一样：
+// printf（）输出函数内，不仅形式不同且输出结果也不同：i++和++i，二者在形式上明显不同，且输出结果也不同，输出值分别为1和2
+i= 1
+console.log(i++)  //1
+i= 1
+console.log(++i)  //2
+// 没有返回值得函数   也叫做  子程  或者  void函数
