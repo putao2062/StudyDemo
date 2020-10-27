@@ -31,7 +31,7 @@ log(Math.abs(y/x))
 let a = x*y
 log(a.toFixed(2))
 
-// 判断结构  找当前数
+// 判断结构  找当前数离两头最近的中间数
 
 let mid = 25
 let high = 50
