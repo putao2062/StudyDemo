@@ -83,7 +83,7 @@ let sum = 0
 while (number2 < 11) {
   sum += number2
   ++number2
-  console.log(number2)
+  console.log(number2) // 2 3 4 5 6 7 8 9 10 11
 }
 log(sum, flower)  //55
 
@@ -156,4 +156,33 @@ function curve (arr, amount) {
 }
 let grades = [1,2]
 curve(grades,5)
-log(grades,bright)
+log(grades,bright)  // 6,7
+
+// 变量作用域  一个变量在程序中的哪个地方可以访问   
+// 函数作用域   变量的值在定义该变量的函数内是可见的，并且定义在该函数内嵌套的函数中也可访问该变量
+
+// 全局变量
+function showScope(){
+  return scope
+}
+let scope = 'global'  // 可在任意位置定义全局变量
+log(scope)        // 'global'
+log(showScope())  // 'global'
+
+// 局部变量
+function showScope2(){
+  let scope = 'local'
+  return scope
+}
+log(scope,flower)        // 'global'
+log(showScope2(),flower)  // 'local'
+
+// 变量污染
+function showScope3(){
+  scope = 'local2'  // 执行后，全局变量会被重新赋值
+  return scope
+}
+
+log(scope,grass)        // 'global'
+log(showScope3(),grass)  // 'local2'
+log(scope,grass)        // 'local2'
