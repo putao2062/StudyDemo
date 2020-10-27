@@ -49,3 +49,28 @@ if(current<mid) {
 }
 
 // switch 语句
+const readline = require('readline');
+
+const rl = readline.createInterface({
+  input:process.stdin,
+  output:process.stdout
+})
+
+rl.question('你想知道甲乙丙谁的名字？', (answer) => {
+  switch(answer){
+    case '甲':
+    log('甲的名字是Tony');
+    break;
+    case '乙':
+    log('乙的名字是Amy');
+    break;
+    case '丙':
+    log('丙的名字是Bace');
+    default:
+    log('不知道这个人是谁');
+    break;
+  }
+  console.log(`感谢您的参与：${answer}`);
+
+  rl.close();
+});
