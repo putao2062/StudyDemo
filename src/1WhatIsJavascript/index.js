@@ -27,3 +27,25 @@ log((x+y)*(x-y))
 let z = 9
 log(Math.sqrt(z))
 log(Math.abs(y/x))
+
+let a = x*y
+log(a.toFixed(2))
+
+// 判断结构  找当前数
+
+let mid = 25
+let high = 50
+let low = 1
+let current = 13
+let found = -1
+if(current<mid) {
+  mid = (current-low)/2
+  log(mid,grass)
+} else if(current>mid){
+  mid = (current+high)/2
+  log(mid,flower)
+}else {
+  found = current
+}
+
+// switch 语句
