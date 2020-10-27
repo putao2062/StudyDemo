@@ -5,5 +5,5 @@ const greeting = "Hello,world"
 let flag = false
 
 let {log} = require('../utils/log.js')
-log(greeting,{font:"red",bg:"green"})
+log(greeting,log.style.bright)
 console.log(greeting)
