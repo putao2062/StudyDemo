@@ -19,11 +19,25 @@ let arr2 = [1,2]
 let arr3 = new Array()
 let arr4 = new Array(1,2,3)
 let arr5 = new Array(10)
-log(arr.length)
-log(arr2.length)
-log(arr3.length)
-log(arr4.length)
-log(arr5.length)
+log(arr.length)   //0
+log(arr2.length)  //2
+log(arr3.length)  //0
+log(arr4.length)  //3
+log(arr5.length)  //10
 
 let arr6= [1,'haha']
-log(Array.isArray(arr6))
+log(Array.isArray(arr6))  //true
+
+// 读写数组
+let nums = []
+for (let i = 0; i < 100;i++) {
+  nums[i] = i+1
+}
+log(nums)
+
+let sum = 0
+for (let i = 0; i < nums.length; i++) {
+  sum += nums[i];
+  
+}
+log(sum,bright)  // sum 不给初始赋值为0的话 输出Nan,初始赋值后输出5050
