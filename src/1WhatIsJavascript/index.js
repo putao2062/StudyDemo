@@ -18,18 +18,18 @@ log(greeting, flower)
 // javascript 中的算数运算和数学库函数
 let x = 3
 let y = 1.1
-log(x+y)
-log(x-y)
-log(x*y)
-log(x/y)
-log((x+y)*(x-y))
+log(x + y)
+log(x - y)
+log(x * y)
+log(x / y)
+log((x + y) * (x - y))
 
 let z = 9
 log(Math.sqrt(z))
-log(Math.abs(y/x))
+log(Math.abs(y / x))
 
-let a = x*y
-log(a.toFixed(2))
+let a = x * y
+log(a.toFixed(2))  //3.30
 
 // 判断结构  找当前数离两头最近的中间数
 
@@ -38,13 +38,13 @@ let high = 50
 let low = 1
 let current = 13
 let found = -1
-if(current<mid) {
-  mid = (current-low)/2
-  log(mid,grass)
-} else if(current>mid){
-  mid = (current+high)/2
-  log(mid,flower)
-}else {
+if (current < mid) {
+  mid = (current - low) / 2
+  log(mid, grass)  // 6
+} else if (current > mid) {
+  mid = (current + high) / 2
+  log(mid, flower)
+} else {
   found = current
 }
 
@@ -52,23 +52,23 @@ if(current<mid) {
 const readline = require('readline');
 
 const rl = readline.createInterface({
-  input:process.stdin,
-  output:process.stdout
+  input: process.stdin,
+  output: process.stdout
 })
 
 rl.question('你想知道甲乙丙谁的名字？', (answer) => {
-  switch(answer){
+  switch (answer) {
     case '甲':
-    log('甲的名字是Tony');
-    break;
+      log('甲的名字是Tony');
+      break;
     case '乙':
-    log('乙的名字是Amy');
-    break;
+      log('乙的名字是Amy');
+      break;
     case '丙':
-    log('丙的名字是Bace');
+      log('丙的名字是Bace');
     default:
-    log('不知道这个人是谁');
-    break;
+      log('不知道这个人是谁');
+      break;
   }
   console.log(`感谢您的参与：${answer}`);
 
@@ -80,20 +80,20 @@ rl.question('你想知道甲乙丙谁的名字？', (answer) => {
 // while 循环
 let number2 = 1
 let sum = 0
-while(number2<11){
+while (number2 < 11) {
   sum += number2
   ++number2
   console.log(number2)
 }
-log(sum,flower)
+log(sum, flower)  //55
 
 // for 循环
 // ++i和i++的区别：比如i=3，b=i++就是说b=3,完成之后让i变成4，b=++i就是先让i++变成4，然后b=4
 
-for(let i = 1;i<11;i++){
-  sum+=i
+for (let i = 1; i < 11; i++) {
+  sum += i
 }
-log(sum,flower)
+log(sum, flower)  //110
 
 // i++和++i命令的区bai别有：
 
@@ -125,24 +125,35 @@ log(sum,flower)
 
 // 函数
 // 有返回值的函数  阶乘
-function factorial(number){
+function factorial (number) {
   let product = 1;
   // for 循环中的 括号内的第三部分的代码执行在 代码体之后 执行，所以 --i 和 i-- 不影响结果
-  for(let i= number;i>=1;i--,console.log(i)){
-    product*=i
-    console.log(i+"h")
+  for (let i = number; i >= 1; i-- , console.log(i)) {
+    product *= i
+    console.log(i + "h")
   }
   return product
 }
-log(factorial(3),flower)
+log(factorial(3), flower)  // 3h,2,2h,1,1h,0,6
 
 // for循环中i++与++i的区别
 // 1、++i是先改变i的值即加1后再使用i的值；而i++是先使用i的值在改变它的值即加。
 
 // 2、for循环内部仅形式不同：当i++循环和++i循环在for循环内部，虽然形式上明显不同，但输出结果可以一样：
 // printf（）输出函数内，不仅形式不同且输出结果也不同：i++和++i，二者在形式上明显不同，且输出结果也不同，输出值分别为1和2
-i= 1
+i = 1
 console.log(i++)  //1
-i= 1
+i = 1
 console.log(++i)  //2
+
+
 // 没有返回值得函数   也叫做  子程  或者  void函数
+// 曲线  数额
+function curve (arr, amount) {
+  for (let i = 0; i < arr.length; i++) {
+    arr[i] += amount;
+  }
+}
+let grades = [1,2]
+curve(grades,5)
+log(grades,bright)
