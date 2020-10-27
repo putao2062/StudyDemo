@@ -27,3 +27,36 @@ git rm -r --cached . #清空git缓存
 git add .  #把工作时的所有变化提交到暂存区
 ```
 
+
+
+## Data Structure and Algorithm  Javascript Description
+
+1. javascript 的编程环境和模型
+
+2. 数组
+
+3. 列表
+
+4. 栈
+
+5. 队列
+
+6. 链表
+
+7. 字典
+
+8. 散列
+
+9. 集合
+
+10. 二叉树和二叉查找树
+
+11. 图和图算法
+
+12. 排序算法
+
+13. 检索算法
+
+14. 高级算法
+
+    ​
