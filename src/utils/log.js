@@ -19,6 +19,15 @@ logFun.style={
   // 明亮
   bright:{
     font:"red",bg:"yellow"
+  },
+  article:{
+    font:"black",bg:"white"
+  },
+  grass:{
+    font:"black",bg:"green"
+  },
+  flower:{
+    font:"white",bg:"purple"
   }
 }
 
