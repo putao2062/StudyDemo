@@ -18,7 +18,7 @@ let flower = log.style.flower
 // 工具：length/clear
 
 //一个栈类的实现 
-function Stack(){
+function Stack () {
   this.top = 0
   this.dataStore = []
 
@@ -30,24 +30,24 @@ function Stack(){
   this.clear = clear
 }
 
-function push (element){
+function push (element) {
   this.dataStore[this.top++] = element
 }
 
 
-function pop(){
+function pop () {
   return this.dataStore[--this.top]
 }
 
-function peek(){
-  return this.dataStore[this.top -1]
+function peek () {
+  return this.dataStore[this.top - 1]
 }
 
-function length(){
+function length () {
   return this.top
 }
 
-function clear(){
+function clear () {
   this.top = 0
 }
 
@@ -57,7 +57,7 @@ s.push('小红')
 s.push('小绿')
 s.push('小黄')
 
-log(`length:${s.length()}`,bright)
+log(`length:${s.length()}`, bright)
 
 log(`peek的是${s.peek()}`)
 let poped = s.pop()
@@ -70,3 +70,21 @@ log(`现在peek的是${s.peek()}`)
 log(`length:${s.length()}`)
 s.push('小紫')
 log(`现在peek的是${s.peek()}`)
+
+// 使用Stack类
+// 数制间的相互转换 
+function mulBase (num, base) {
+  let s = new Stack()
+  do {
+    s.push(num % base)
+    num = Math.floor(num /= base)
+  }
+  while (num > 0)
+  var converted = ""
+  while (s.length() > 0) {
+    converted += s.pop()
+  }
+  return converted
+}
+
+log(mulBase(30, 5),flower)
