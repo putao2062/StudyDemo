@@ -41,3 +41,5 @@ for (let i = 0; i < nums.length; i++) {
   
 }
 log(sum,bright)  // sum 不给初始赋值为0的话 输出Nan,初始赋值后输出5050
+
+// 
