@@ -100,14 +100,16 @@ function end () {
 }
 function prev () {
   if (this.pos > 0) {
-    this.pos -= 1
+    // this.pos -= 1
+    --this.pos
   }
   // console.log('当前位置' + this.pos)   //容易出错的地方，别忘记了写 等于号 （＊￣（エ）￣） 
 }
 
 function next () {
   if (this.pos < this.listSize - 1) {
-    this.pos += 1
+    // this.pos += 1
+    ++this.pos
   }
   // console.log('当前位置' + this.pos)
 }
@@ -145,3 +147,15 @@ log(names.getElement(), bright)
 names.prev()
 log(names.getElement(), grass)
 log(names.toString(), flower)
+
+
+// 使用迭代器访问列表
+
+for(names.front();names.currPos()< names.length();names.next()){
+   log(names.currPos())
+   log(names.length())
+   log(names.getElement(),article)
+   
+   // 因为next函数中的pos值永远都<= names.listSize-1，所以这个循环判断的条件会永远为真 ,添加一个修复的终止循环的代码
+   if(names.currPos() == names.length() -1) break
+  }
