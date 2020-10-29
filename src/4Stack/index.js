@@ -25,6 +25,9 @@ function Stack(){
   this.push = push
   this.pop = pop
   this.peek = peek
+
+  this.length = length
+  this.clear = clear
 }
 
 function push (element){
@@ -47,3 +50,23 @@ function length(){
 function clear(){
   this.top = 0
 }
+
+// test
+let s = new Stack()
+s.push('小红')
+s.push('小绿')
+s.push('小黄')
+
+log(`length:${s.length()}`,bright)
+
+log(`peek的是${s.peek()}`)
+let poped = s.pop()
+log(`pop的是${poped}`)
+log(`现在peek的是${s.peek()}`)
+
+s.clear()
+log(`现在peek的是${s.peek()}`)
+
+log(`length:${s.length()}`)
+s.push('小紫')
+log(`现在peek的是${s.peek()}`)
