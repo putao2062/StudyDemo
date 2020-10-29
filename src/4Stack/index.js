@@ -10,7 +10,7 @@ let flower = log.style.flower
 
 // 栈式是一种特殊的列表，栈内的元素只能通过列表的一端访问，这一端称为栈顶。（和列表的区别，不从中间插入数据）
 // 栈式是一种高效的数据结构（只从栈顶添加和删除，这样很快。）后入先出 last in first out
-// 咖啡厅的一摞盘子、
+// 咖啡厅的一摞盘子、数制转换、回文
 
 // Stack ADT:
 // 属性：top
@@ -87,4 +87,23 @@ function mulBase (num, base) {
   return converted
 }
 
-log(mulBase(30, 5),flower)
+log(mulBase(30, 5),flower)  // 110
+
+// 回文
+// 回文，一个单词，短语，数字，从前往后写和从后往前些都是一样的
+// 使用栈来判断一个字符串是否是回文
+function isPalindrome(word){
+  var s = new Stack()
+  for(let i=0,len=word.length;i<len;++i){
+    s.push(word[i])
+  }
+ 
+  let reWord = '';
+  for(let i = 0,len = word.length;i<len;++i){
+    // reWord += s[i]
+    reWord += s.pop()
+  }
+  return reWord == word
+}
+
+log(`level isPalindrome:${isPalindrome('level')}`)
