@@ -107,3 +107,32 @@ function isPalindrome(word){
 }
 
 log(`level isPalindrome:${isPalindrome('level')}`)
+
+// 递归演示
+// 栈常常被用来实现编程语言
+
+function factorial(n){
+  if(n ===0){
+    return 1
+  } else {
+    return n* factorial(n-1)
+  }
+}
+
+// 使用栈模拟递归
+function fact(n){
+  let s = new Stack()
+  while(n>1){
+    s.push(n--)
+  }
+
+  let product = 1
+  while(s.length()>0){
+    product *= s.pop()
+  }
+
+  return product
+}
+
+log(factorial(5))
+log(fact(5))
