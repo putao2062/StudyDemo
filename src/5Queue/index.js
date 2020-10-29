@@ -12,9 +12,9 @@ let flower = log.style.flower
 // Queue ADT:
 // 属性：dataStroe
 // 方法：enqueue/dequeue/toString/front/back/ (增1、删1、查3)
-// 工具：length/isEmpty
+// 工具：count/isEmpty
 
-function Queue(){
+function Queue () {
   this.dataStore = []
 
   this.enqueue = enqueue
@@ -23,33 +23,33 @@ function Queue(){
   this.toString = toString
   this.front = front
   this.back = back
-  this.length = length
+  this.count = count
 }
 
-function enqueue(element){
+function enqueue (element) {
   this.dataStore.push(element)
 }
 
-function dequeue(){
-  this.dataStore.shift()
+function dequeue () {
+ return this.dataStore.shift()
 }
 // 判断是否为空
-function isEmpty(){
- return this.dataStore.length===0 
+function isEmpty () {
+  return this.dataStore.length === 0
 }
 
-function toString(){
+function toString () {
   return this.dataStore.join('\n')
 }
 
-function front(){
+function front () {
   return this.dataStore[0]
 }
-function back(){
-  return this.dataStore[this.dataStore.length-1]
+function back () {
+  return this.dataStore[this.dataStore.length - 1]
 }
-function length(){
- return this.dataStore.length
+function count () {
+  return this.dataStore.length
 }
 
 // test
@@ -61,6 +61,56 @@ queue.enqueue('小黄')
 log(queue.toString())
 
 queue.dequeue()
-log(queue.toString(),bright)
-log(`first is ${queue.front()}`,bright)
-log(`back is ${queue.back()}`,bright)
+log(queue.toString(), bright)
+log(`first is ${queue.front()}`, bright)
+log(`back is ${queue.back()}`, bright)
+
+// 使用队列：方块舞的舞伴分配问题
+
+let fs = require('fs')
+let femaleQueue = new Queue()
+let maleQueue = new Queue()
+
+function Dancer(name,sex){
+  this.name = name
+  this.sex = sex
+}
+function getDancer (maleQueue,femaleQueue) {
+  return new Promise((resolve, reject) => {
+    fs.readFile(__dirname + '/person.txt', 'utf8', (err, data) => {
+      if (err) {
+        reject()
+      } else {
+        data.split('\n').forEach(item => {
+         
+          item = item.replace(/\s+/ig," ")
+          let newItme = item.trim().split(' ')
+          if (newItme[0] === '男') {
+            maleQueue.enqueue(new Dancer(newItme[1],'男'))
+          } else {
+            femaleQueue.enqueue(new Dancer(newItme[1],'女'))
+          }
+        })
+        resolve({maleQueue,femaleQueue})
+      }
+    })
+  })
+}
+
+function dance(maleQueue,femaleQueue){
+  while(!femaleQueue.isEmpty()&& !maleQueue.isEmpty()){
+    log(`男舞者为：${maleQueue.dequeue().name}  女舞者为:${femaleQueue.dequeue().name}`)
+  }
+  if(femaleQueue.isEmpty()){
+    log(`还有${maleQueue.count()}名男舞者在等待`)
+  }
+  if(maleQueue.isEmpty()){
+    log(`还有${femaleQueue.count()}名女舞者在等待`)
+  }
+}
+
+async function app(){
+  let obj = await getDancer(maleQueue,femaleQueue)
+  dance(obj.maleQueue,obj.femaleQueue)
+}
+app()
