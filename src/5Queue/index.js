@@ -114,3 +114,83 @@ async function app(){
   dance(obj.maleQueue,obj.femaleQueue)
 }
 app()
+
+// 使用队列对数据进行排序   基数排序法
+// 0——99,基数排序，将数据集扫描两次，根据对应位上的数字将其放到 0到9的10个队列盒子中
+
+let nums = [23,54,12,67,33,45,66,98,92]
+function baseNumSort(nums){
+  // log(1)
+  let firstBaseQueue = new Array(10)
+  for(let i = 0,len = firstBaseQueue.length;i<len;++i){
+    firstBaseQueue[i] = new Queue()
+  }
+  nums.forEach((item,i)=>{
+    log(item%10)
+   firstBaseQueue[item%10].enqueue(item)
+  })
+  // log(firstBaseQueue)
+  let secondBaseQueue = new Array(10)
+  for(let i = 0,len=secondBaseQueue.length;i<len;++i){
+    secondBaseQueue[i] = new Queue()
+  }
+  
+  for(let i= 0,len= firstBaseQueue.length;i<len;++i){
+    for(let j=0,len2=firstBaseQueue[i].count();j<len2;++j){
+      let num = firstBaseQueue[i].dequeue()
+      let base = Math.floor(num/10)
+      secondBaseQueue[base].enqueue(num)
+    }
+  }
+  
+  let newQ= new Queue()
+  for(let i= 0,len= secondBaseQueue.length;i<len;++i){
+    for(let j=0,len2=secondBaseQueue[i].count();j<len2;++j){
+      newQ.enqueue(secondBaseQueue[i].dequeue())
+    }
+  }
+  return newQ.toString()
+}
+try {
+  log(baseNumSort(nums))
+} catch (error) {
+  log(error)
+}
+
+// 书上的基数排序
+// 分配  digit 数字
+function distribute (nums,queues,digit){
+  for(let i=0; i<nums.length;++i){
+    if(digit ==1){
+      queues[nums[i]%10].enqueue(nums[i])
+    } else {
+      queues[Math.floor(nums[i]/10)].enqueue(nums[i])
+    }
+  }
+}
+function collect(queues,nums){
+  let i= 0
+  for(let digit = 0;digit<10;++digit ){
+    while(!queues[digit].isEmpty()){
+      nums[i++] = queues[digit].dequeue()
+    }
+  }
+}
+
+let queues = []
+for(let i=0;i<10;++i){
+  queues[i] = new Queue()
+}
+
+nums = []
+for(let i=0;i<20;++i){
+  nums[i] = Math.floor(Math.random()*101)
+}
+
+log(nums)
+distribute(nums,queues,1)
+collect(queues,nums)
+log(nums)
+distribute(nums,queues,10)
+collect(queues,nums)
+log(nums)
