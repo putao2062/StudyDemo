@@ -39,6 +39,9 @@ function Graph (v) {
 
   this.dfs = dfs
   this.bfs = bfs
+
+  this.hasPathTo = hasPathTo
+  this.pathTo = pathTo
 }
 
 function addEdge (v, w) {
@@ -111,8 +114,9 @@ let g = new Graph(5)
 
 g.addEdge(0, 1)
 g.addEdge(0, 2)
-g.addEdge(1, 3)
-g.addEdge(2, 4)
+g.addEdge(1, 4)
+g.addEdge(2, 3)
+g.addEdge(3, 4)
 g.toString()
 g.showGraph()
 
@@ -120,3 +124,30 @@ g.showGraph()
 
 g.dfs(0)
 g.bfs(0)
+
+// 查找最短路径
+// 广度优先搜索对应的最短路径 edgeTo 记录从一个顶点到下一个顶点的所有边
+
+function pathTo (v) {
+  let source = 0  // 根节点  为0
+  if (!this.hasPathTo(v)) {
+    return undefined
+  }
+  let path = []
+
+  //  i 的值分别为：v , this.edgeTo[v],  ... , 0 然后终止循环
+  for (var i = v; i != source; i = this.edgeTo[i]) {
+    log("i的值" + i)
+    path.push(i)
+  }
+  path.push(source)
+  return path
+
+}
+
+function hasPathTo (v) {
+  return this.marked[v]
+}
+
+let paths = g.pathTo(4)
+log(paths.join(','))
