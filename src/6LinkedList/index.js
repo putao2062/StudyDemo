@@ -67,10 +67,17 @@ function remove (item) {
   // let prevNode = this.findPrevious(item)
 
   // prevNode.next = currNode.next
-  if(item!='head'){
+  if(item!='head'&& currNode.next !=null){
     currNode.next.prev = currNode.prev
     currNode.prev.next = currNode.next
+
+    currNode.next = null
+    currNode.prev =null
+  } else if(item!='head'&& currNode.next ==null){
+    currNode.prev.next = null
+    currNode.prev =null
   }
+
 }
 
 function display () {
