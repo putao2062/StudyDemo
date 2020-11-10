@@ -15,58 +15,68 @@ let flower = log.style.flower
 // 方法：insert/remove/display/find
 // 节点类：Node：element/next
 
-function Node(element){
+function Node (element) {
   this.element = element
   this.next = null
+  this.prev = null
 }
 
-function Linkedlist(){
+function Linkedlist () {
   this.head = new Node('head')
   this.find = find
-  this.findPrevious = findPrevious
+  // this.findPrevious = findPrevious
   this.insert = insert
   this.remove = remove
   this.display = display
 }
 
-function find(item){
-   let  currNode = this.head
+function find (item) {
+  let currNode = this.head
 
-   while(currNode.next != null && currNode.element != item){
-     currNode = currNode.next
-   }
+  while (currNode.next != null && currNode.element != item) {
+    currNode = currNode.next
+  }
 
-   return currNode
+  return currNode
 }
-function findPrevious(item){
-  let  currNode = this.head
+function findPrevious (item) {
+  let currNode = this.head
 
-  while(currNode.next.next != null && currNode.next.element != item){
+  while (currNode.next.next != null && currNode.next.element != item) {
     currNode = currNode.next
   }
 
   return currNode
 }
 
-function insert(item,after){
-   let currNode = this.find(after)
-   let newNode = new Node(item)
+function insert (item, after) {
+  let currNode = this.find(after)
+  let newNode = new Node(item)
 
-   newNode.next = currNode.next
-   currNode.next = newNode
+  newNode.next = currNode.next
+  newNode.prev = currNode
+
+  if (newNode.next != null) {
+    newNode.next.prev = newNode
+  }
+  currNode.next = newNode
 }
 
-function remove (item){
+function remove (item) {
   let currNode = this.find(item)
-  let prevNode = this.findPrevious(item)
+  // let prevNode = this.findPrevious(item)
 
-  prevNode.next = currNode.next
+  // prevNode.next = currNode.next
+  if(item!='head'){
+    currNode.next.prev = currNode.prev
+    currNode.prev.next = currNode.next
+  }
 }
 
-function display(){
-  let  currNode = this.head
+function display () {
+  let currNode = this.head
 
-  while(currNode.next != null ){
+  while (currNode.next != null) {
     log(`${currNode.element}\n`)
     currNode = currNode.next
   }
@@ -75,10 +85,10 @@ function display(){
 // test
 
 let cities = new Linkedlist()
-cities.insert('大连','head')
-cities.insert('长沙','head')
-cities.insert('北京','head')
-cities.insert('天津','head')
+cities.insert('大连', 'head')
+cities.insert('长沙', 'head')
+cities.insert('北京', 'head')
+cities.insert('天津', 'head')
 cities.display()
 
 cities.remove('北京')
