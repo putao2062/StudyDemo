@@ -23,6 +23,9 @@ function Node (element) {
 
 function Linkedlist () {
   this.head = new Node('head')
+  this.head.next = this.head
+  this.head.prev = this.head
+
   this.find = find
   // this.findPrevious = findPrevious
   this.insert = insert
@@ -51,40 +54,45 @@ function findPrevious (item) {
 
 function insert (item, after) {
   let currNode = this.find(after)
+
   let newNode = new Node(item)
 
   newNode.next = currNode.next
   newNode.prev = currNode
 
+
   if (newNode.next != null) {
     newNode.next.prev = newNode
   }
   currNode.next = newNode
+
 }
+
 
 function remove (item) {
   let currNode = this.find(item)
   // let prevNode = this.findPrevious(item)
 
   // prevNode.next = currNode.next
-  if(item!='head'&& currNode.next !=null){
+  if (item != 'head' && currNode.next != null) {
     currNode.next.prev = currNode.prev
     currNode.prev.next = currNode.next
 
     currNode.next = null
-    currNode.prev =null
-  } else if(item!='head'&& currNode.next ==null){
+    currNode.prev = null
+  } else if (item != 'head' && currNode.next == null) {
     currNode.prev.next = null
-    currNode.prev =null
+    currNode.prev = null
   }
 
 }
 
 function display () {
   let currNode = this.head
-
-  while (currNode.next != null) {
-    log(`${currNode.element}\n`)
+  
+  while (currNode.next != null &&
+    currNode.next.element != 'head') {
+    log(`${currNode.next.element}\n`)
     currNode = currNode.next
   }
 }
