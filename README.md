@@ -13,7 +13,7 @@
 windows github 桌面工具  Open In Git Shell 
 
 ```
-git checkout --orphan typescript  #创建孤本分支typescript
+git checkout --orphan react  #创建孤本分支react
 
 git stauts   #查看状态
 
