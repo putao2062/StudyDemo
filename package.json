@@ -1,0 +1,22 @@
+{
+  "name": "studydemo",
+  "version": "1.0.0",
+  "description": "自己的电脑上有很多学习相关技术时所留下的demo ，以及解读代码时留下的注释",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/putao2062/StudyDemo.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/putao2062/StudyDemo/issues"
+  },
+  "homepage": "https://github.com/putao2062/StudyDemo#readme",
+  "devDependencies": {
+    "typescript": "^4.0.3"
+  }
+}
